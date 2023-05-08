@@ -1,12 +1,11 @@
 package com.data.apidata.DTOs;
 
 import com.data.apidata.model.Supplier;
-import jdk.jshell.Snippet;
 
 import java.time.LocalDate;
 
-public record ProductRequestDTO(
-    Long idSupplier,
+public record ProductDTO (
+    Supplier supplier,
     String name,
     String description,
     Float value,
@@ -17,5 +16,5 @@ public record ProductRequestDTO(
     LocalDate createdAt,
     LocalDate updatedAt,
     LocalDate deletedAt
-) {
+){
 }

@@ -1,6 +1,8 @@
 package com.data.apidata.model;
 
+import com.data.apidata.DTOs.ProductDTO;
 import com.data.apidata.DTOs.ProductRequestDTO;
+import com.data.apidata.DTOs.ProductResponseDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,7 +34,7 @@ public class Product {
     private LocalDate updatedAt;
     private LocalDate deletedAt;
 
-    public Product (ProductRequestDTO data) {
+    public Product (ProductDTO data) {
         this.supplier = data.supplier();
         this.name = data.name();
         this.description = data.description();
