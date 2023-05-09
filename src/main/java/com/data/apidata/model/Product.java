@@ -1,8 +1,6 @@
 package com.data.apidata.model;
 
 import com.data.apidata.DTOs.ProductDTO;
-import com.data.apidata.DTOs.ProductRequestDTO;
-import com.data.apidata.DTOs.ProductResponseDTO;
 import jakarta.persistence.*;
 import lombok.*;
 

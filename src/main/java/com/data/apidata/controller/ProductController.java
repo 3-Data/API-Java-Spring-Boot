@@ -18,7 +18,7 @@ public class ProductController {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public void createProduct(@RequestBody ProductRequestDTO data) {
-        Supplier supplier = supplierRepository.findById(data.idSupplier());
+        Supplier supplier = supplierRepository.findById(data.idSupplier()).orElse(new Supplier());
 
         Product product = new Product(new ProductDTO(
                 supplier,
