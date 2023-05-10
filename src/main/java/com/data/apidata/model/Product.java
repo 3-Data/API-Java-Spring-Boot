@@ -35,7 +35,13 @@ public class Product {
     private Supplier supplier;
 
     @ManyToMany(mappedBy = "products")
-    Set<Category> categories;
+    private Set<Category> categories;
+
+    @OneToMany(mappedBy = "product")
+    private Set<ProductImage> productImages;
+
+    @OneToOne(mappedBy = "product")
+    private Stock stock;
 
     public Product (ProductDTO data) {
         this.supplier = data.supplier();
