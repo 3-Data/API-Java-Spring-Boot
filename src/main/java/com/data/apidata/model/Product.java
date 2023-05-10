@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Data
 @Entity(name = "product")
@@ -18,9 +19,6 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Supplier supplier;
-
     private String name;
     private String description;
     private Float value;
@@ -31,6 +29,13 @@ public class Product {
     private LocalDate createdAt;
     private LocalDate updatedAt;
     private LocalDate deletedAt;
+
+    @ManyToOne
+    @JoinColumn(name="idSupplier", nullable = false)
+    private Supplier supplier;
+
+    @ManyToMany(mappedBy = "products")
+    Set<Category> categories;
 
     public Product (ProductDTO data) {
         this.supplier = data.supplier();

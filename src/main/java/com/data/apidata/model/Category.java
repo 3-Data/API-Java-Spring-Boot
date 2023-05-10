@@ -1,16 +1,14 @@
 package com.data.apidata.model;
 
 import com.data.apidata.DTOs.CategoryRequestDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Data
 @Entity(name = "category")
@@ -27,6 +25,14 @@ public class Category {
     private LocalDate createdAt;
     private LocalDate updatedAt;
     private LocalDate deletedAt;
+
+    @ManyToMany(mappedBy = "products")
+    @JoinTable(
+        name = "categoryProduct",
+        joinColumns = @JoinColumn(name = "idCategory"),
+        inverseJoinColumns = @JoinColumn(name = "idProduct")
+    )
+    Set<Product> products;
 
     public Category (CategoryRequestDTO data) {
         this.description = data.description();
