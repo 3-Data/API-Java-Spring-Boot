@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -34,8 +35,13 @@ public class Product {
     @JoinColumn(name="idSupplier", nullable = false)
     private Supplier supplier;
 
-    @ManyToMany(mappedBy = "products")
-    private Set<Category> categories;
+    @ManyToMany
+    @JoinTable(
+            name = "categoriesProduct",
+            joinColumns = @JoinColumn(name = "idProduct"),
+            inverseJoinColumns = @JoinColumn(name = "idCategory")
+    )
+    private Set<Category> categories = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
     private Set<ProductImage> productImages;

@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -26,13 +27,8 @@ public class Category {
     private LocalDate updatedAt;
     private LocalDate deletedAt;
 
-    @ManyToMany(mappedBy = "products")
-    @JoinTable(
-        name = "categoryProduct",
-        joinColumns = @JoinColumn(name = "idCategory"),
-        inverseJoinColumns = @JoinColumn(name = "idProduct")
-    )
-    Set<Product> products;
+    @ManyToMany(mappedBy = "categories")
+    private Set<Product> products = new HashSet<>();
 
     public Category (CategoryRequestDTO data) {
         this.description = data.description();
