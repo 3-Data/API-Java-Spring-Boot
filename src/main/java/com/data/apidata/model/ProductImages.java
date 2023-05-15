@@ -6,11 +6,11 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Data
-@Entity(name = "productImage")
+@Entity(name = "productImages")
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class ProductImage {
+public class ProductImages {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

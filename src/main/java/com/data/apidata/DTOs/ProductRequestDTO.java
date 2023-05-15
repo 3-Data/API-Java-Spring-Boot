@@ -4,7 +4,7 @@ public record ProductRequestDTO(
     Long idSupplier,
     String name,
     String description,
-    Float value,
+    Float productValue,
     Float length,
     Float width,
     Float longitude,

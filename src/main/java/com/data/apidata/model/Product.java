@@ -22,7 +22,7 @@ public class Product {
 
     private String name;
     private String description;
-    private Float value;
+    private Float productValue;
     private Float length;
     private Float width;
     private Float longitude;
@@ -37,14 +37,14 @@ public class Product {
 
     @ManyToMany
     @JoinTable(
-            name = "categoriesProduct",
-            joinColumns = @JoinColumn(name = "idProduct"),
-            inverseJoinColumns = @JoinColumn(name = "idCategory")
+        name = "categoriesProduct",
+        joinColumns = @JoinColumn(name = "idProduct"),
+        inverseJoinColumns = @JoinColumn(name = "idCategory")
     )
     private Set<Category> categories = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
-    private Set<ProductImage> productImages;
+    private Set<ProductImages> productImages;
 
     @OneToOne(mappedBy = "product")
     private Stock stock;
@@ -53,7 +53,7 @@ public class Product {
         this.supplier = data.supplier();
         this.name = data.name();
         this.description = data.description();
-        this.value = data.value();
+        this.productValue = data.productValue();
         this.length = data.length();
         this.width = data.width();
         this.longitude = data.longitude();

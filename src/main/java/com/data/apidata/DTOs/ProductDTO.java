@@ -8,7 +8,7 @@ public record ProductDTO (
     Supplier supplier,
     String name,
     String description,
-    Float value,
+    Float productValue,
     Float length,
     Float width,
     Float longitude,

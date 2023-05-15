@@ -24,7 +24,7 @@ public class ProductController {
                 supplier,
                 data.name(),
                 data.description(),
-                data.value(),
+                data.productValue(),
                 data.length(),
                 data.width(),
                 data.longitude(),
