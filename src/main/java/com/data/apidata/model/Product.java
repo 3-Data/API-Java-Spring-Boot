@@ -17,18 +17,38 @@ import java.util.Set;
 @EqualsAndHashCode(of = "id")
 public class Product {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "productValue")
     private Float productValue;
+
+    @Column(name = "length")
     private Float length;
+
+    @Column(name = "width")
     private Float width;
+
+    @Column(name = "longitude")
     private Float longitude;
+
+    @Column(name = "color")
     private String color;
+
+    @Column(name = "createdAt")
     private LocalDate createdAt;
+
+    @Column(name = "updatedAt")
     private LocalDate updatedAt;
+
+    @Column(name = "deletedAt")
     private LocalDate deletedAt;
 
     @ManyToOne

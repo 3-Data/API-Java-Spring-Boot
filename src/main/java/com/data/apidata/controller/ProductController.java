@@ -6,18 +6,22 @@ import com.data.apidata.model.Product;
 import com.data.apidata.model.Supplier;
 import com.data.apidata.repository.ProductRepository;
 import com.data.apidata.repository.SupplierRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("products")
 public class ProductController {
 
+    @Autowired
     private ProductRepository repository;
+    @Autowired
     private SupplierRepository supplierRepository;
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public void createProduct(@RequestBody ProductRequestDTO data) {
+        System.out.println(data.idSupplier());
         Supplier supplier = supplierRepository.findById(data.idSupplier()).get();
 
         Product product = new Product(new ProductDTO(
