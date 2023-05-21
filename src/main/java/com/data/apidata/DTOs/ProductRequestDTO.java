@@ -1,5 +1,7 @@
 package com.data.apidata.DTOs;
 
+import java.util.List;
+
 public record ProductRequestDTO(
     Long idSupplier,
     String name,
@@ -8,6 +10,9 @@ public record ProductRequestDTO(
     Float length,
     Float width,
     Float longitude,
-    String color
+    String color,
+    List<Long> categories,
+    List<String> productImages,
+    Integer stock
 ) {
 }

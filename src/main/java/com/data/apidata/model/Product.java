@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -61,13 +63,12 @@ public class Product {
         joinColumns = @JoinColumn(name = "idProduct"),
         inverseJoinColumns = @JoinColumn(name = "idCategory")
     )
-    private Set<Category> categories = new HashSet<>();
+    private List<Category> categories = new ArrayList<Category>();
 
     @OneToMany(mappedBy = "product")
-    private Set<ProductImages> productImages;
+    private List<ProductImage> productImages;
 
-    @OneToOne(mappedBy = "product")
-    private Stock stock;
+    private Integer stock;
 
     public Product (ProductDTO data) {
         this.supplier = data.supplier();
@@ -78,6 +79,8 @@ public class Product {
         this.width = data.width();
         this.longitude = data.longitude();
         this.color = data.color();
+        this.categories = data.categories();
+        this.productImages = data.productImages();
         this.createdAt = java.time.LocalDate.now();
         this.updatedAt = null;
         this.deletedAt = null;

@@ -25,9 +25,9 @@ public class CategoryController {
     }
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
-    public void createCategory (CategoryRequestDTO data) {
+    public Category createCategory (CategoryRequestDTO data) {
         Category categoryData = new Category(data);
 
-        repository.save(categoryData);
+        return repository.save(categoryData);
     }
 }
