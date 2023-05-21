@@ -1,6 +1,7 @@
 package com.data.apidata.model;
 
 import com.data.apidata.DTOs.CategoryRequestDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -27,6 +28,7 @@ public class Category {
     private LocalDate updatedAt;
     private LocalDate deletedAt;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "categories")
     private Set<Product> products = new HashSet<>();
 

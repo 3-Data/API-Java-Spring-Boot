@@ -1,5 +1,6 @@
 package com.data.apidata.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,6 +18,7 @@ public class ProductImage {
 
     private String image;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idProduct")
     private Product product;

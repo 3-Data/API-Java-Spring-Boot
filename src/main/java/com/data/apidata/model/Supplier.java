@@ -1,6 +1,7 @@
 package com.data.apidata.model;
 
 import com.data.apidata.DTOs.SupplierRequestDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -32,6 +33,7 @@ public class Supplier {
     private LocalDate updatedAt;
     private LocalDate deletedAt;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "supplier")
     private List<Product> products;
 

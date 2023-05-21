@@ -1,6 +1,7 @@
 package com.data.apidata.model;
 
 import com.data.apidata.DTOs.ProductDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -53,10 +54,12 @@ public class Product {
     @Column(name = "deletedAt")
     private LocalDate deletedAt;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="idSupplier", nullable = false)
     private Supplier supplier;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "categoriesProduct",
@@ -65,6 +68,7 @@ public class Product {
     )
     private List<Category> categories = new ArrayList<Category>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "product")
     private List<ProductImage> productImages;
 
@@ -80,6 +84,7 @@ public class Product {
         this.longitude = data.longitude();
         this.color = data.color();
         this.categories = data.categories();
+        this.stock = data.stock();
         this.productImages = data.productImages();
         this.createdAt = java.time.LocalDate.now();
         this.updatedAt = null;
