@@ -4,8 +4,6 @@ import com.data.apidata.DTOs.SupplierRequestDTO;
 import com.data.apidata.model.Supplier;
 import com.data.apidata.repository.SupplierRepository;
 import org.springframework.web.bind.annotation.*;
-import com.data.apidata.model.Fornecedor;
-import com.data.apidata.repository.FornecedorRepository;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
