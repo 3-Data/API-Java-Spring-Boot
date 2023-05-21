@@ -34,6 +34,23 @@ public class ProductController {
     private ProductImageRepository productImageRepository;
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping
+    public List<ProductResponseDTO> getAll() {
+        List<ProductResponseDTO> listProducts = repository.findAll().stream().map(ProductResponseDTO::new).toList();
+        return listProducts;
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("supplier/{supplierId}")
+    public List<ProductResponseDTO> getBySupplier(@PathVariable Long supplierId) {
+        List<ProductResponseDTO> listProducts = repository
+                .findBySupplierId(supplierId)
+                .stream().map(ProductResponseDTO::new).toList();
+
+        return listProducts;
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public ProductResponseDTO createProduct(@RequestBody ProductRequestDTO data) {
         Supplier supplier = supplierRepository
@@ -72,9 +89,7 @@ public class ProductController {
         productImageRepository.saveAll(productImages);
         repository.save(product);
 
-        ProductResponseDTO productResponseDTO = new ProductResponseDTO(product);
-
-        return productResponseDTO;
+        return new ProductResponseDTO(product);
     }
 
 }
