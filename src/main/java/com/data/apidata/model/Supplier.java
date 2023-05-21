@@ -1,5 +1,6 @@
 package com.data.apidata.model;
 
+import com.data.apidata.DTOs.SupplierRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -7,9 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity(name = "supplier")
@@ -29,11 +28,23 @@ public class Supplier {
     private String logo;
     private Float rating;
     private Boolean premium;
-    private Integer idShippingCompany;
     private LocalDate createdAt;
     private LocalDate updatedAt;
     private LocalDate deletedAt;
 
     @OneToMany(mappedBy = "supplier")
     private List<Product> products;
+
+    public Supplier(SupplierRequestDTO data) {
+        this.document = data.document();
+        this.socialReason = data.socialReason();
+        this.commercialReason = data.commercialReason();
+        this.email = data.email();
+        this.logo = data.logo();
+        this.rating = 5.00F;
+        this.premium = false;
+        this.createdAt = java.time.LocalDate.now();
+        this.updatedAt = null;
+        this.deletedAt = null;
+    }
 }
