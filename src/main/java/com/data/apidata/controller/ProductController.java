@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -36,18 +35,23 @@ public class ProductController {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public List<ProductResponseDTO> getAll() {
-        List<ProductResponseDTO> listProducts = repository.findAll().stream().map(ProductResponseDTO::new).toList();
-        return listProducts;
+        return repository.findAll().stream().map(ProductResponseDTO::new).toList();
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("supplier/{supplierId}")
     public List<ProductResponseDTO> getBySupplier(@PathVariable Long supplierId) {
-        List<ProductResponseDTO> listProducts = repository
+        return repository
                 .findBySupplierId(supplierId)
                 .stream().map(ProductResponseDTO::new).toList();
+    }
 
-        return listProducts;
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("category/{categoryId}")
+    public List<ProductResponseDTO> getByCategory(@PathVariable Long categoryId) {
+        return repository
+                .findByCategoriesId(categoryId)
+                .stream().map(ProductResponseDTO::new).toList();
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
