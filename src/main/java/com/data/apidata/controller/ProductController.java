@@ -39,6 +39,12 @@ public class ProductController {
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/{productId}")
+    public ProductResponseDTO getById(@PathVariable Long productId) {
+        return new ProductResponseDTO(repository.findById(productId).get());
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("supplier/{supplierId}")
     public List<ProductResponseDTO> getBySupplier(@PathVariable Long supplierId) {
         return repository
