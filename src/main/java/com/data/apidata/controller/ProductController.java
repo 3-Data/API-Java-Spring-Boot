@@ -13,6 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -26,7 +30,6 @@ public class ProductController {
     private ProductRepository repository;
     @Autowired
     private SupplierRepository supplierRepository;
-
     @Autowired
     private CategoryRepository categoriesRepository;
     @Autowired
@@ -59,6 +62,35 @@ public class ProductController {
                 .findByCategoriesId(categoryId)
                 .stream().map(ProductResponseDTO::new).toList();
     }
+    /*@GetMapping("/search")
+    public List<Product> searchProducts(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String description,
+            @RequestParam(required = false) Float productValue,
+            @RequestParam(required = false) Float length,
+            @RequestParam(required = false) Float width,
+            @RequestParam(required = false) Float longitude,
+            @RequestParam(required = false) String color,
+            @RequestParam(required = false) Integer stock,
+            @RequestParam(required = false) Float minProductValue,
+            @RequestParam(required = false) Float maxProductValue) {
+
+        List<Product> filteredProducts = repository.findAll((Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) -> {
+            List<Predicate> predicates = new ArrayList<>();
+
+            if (minProductValue != null && maxProductValue != null) {
+                predicates.add(criteriaBuilder.between(root.get("productValue"), minProductValue, maxProductValue));
+            } else if (minProductValue != null) {
+                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("productValue"), minProductValue));
+            } else if (maxProductValue != null) {
+                predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("productValue"), maxProductValue));
+            }
+
+            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+        });
+
+        return filteredProducts;
+    }*/
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
