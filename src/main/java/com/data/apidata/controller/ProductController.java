@@ -20,6 +20,7 @@ import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -134,4 +135,15 @@ public class ProductController {
         return new ProductResponseDTO(product);
     }
 
+    @DeleteMapping("/{idProduct}")
+    public void deleteProduct(@PathVariable Long idProduct) {
+        Optional<Product> productToDelete = repository.findById(idProduct);
+
+        if(!productToDelete.isPresent()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado!");
+        }
+        repository.deleteById(idProduct);
+
+        System.out.println("Produto removido com sucesso!");
+    }
 }
