@@ -7,10 +7,13 @@ import com.data.apidata.model.*;
 import com.data.apidata.repository.SaleRepository;
 import com.data.apidata.services.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("sales")
@@ -38,6 +41,22 @@ public class SaleController {
         }
 
         Sale sale = new Sale(new SaleDTO(supplier, client, products, data.value()));
+        repository.save(sale);
+
+        return new SaleResponseDTO(sale);
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PutMapping("/pay/{idSale}")
+    public SaleResponseDTO paySale (@PathVariable Long idSale) {
+        Optional<Sale> saleToPay = repository.findById(idSale);
+
+        if(!saleToPay.isPresent()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Venda não encontrada!");
+        }
+        Sale sale = saleToPay.get();
+        sale.setPayed(true);
+
         repository.save(sale);
 
         return new SaleResponseDTO(sale);
