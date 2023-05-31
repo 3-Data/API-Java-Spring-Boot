@@ -1,5 +1,6 @@
 package com.data.apidata.controller;
 
+import com.data.apidata.DTOs.ProductResponseDTO;
 import com.data.apidata.DTOs.SaleDTO;
 import com.data.apidata.DTOs.SaleRequestDTO;
 import com.data.apidata.DTOs.SaleResponseDTO;
@@ -22,6 +23,34 @@ public class SaleController {
     private SaleRepository repository;
     @Autowired
     private BaseService service;
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping
+    public List<SaleResponseDTO> getAll() {
+        return repository.findAll().stream().map(SaleResponseDTO::new).toList();
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/{saleId}")
+    public SaleResponseDTO getById(@PathVariable Long saleId) {
+        return new SaleResponseDTO(repository.findById(saleId).get());
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("supplier/{idSupplier}")
+    public List<SaleResponseDTO> getBySupplier(@PathVariable Long idSupplier) {
+        return repository
+                .findBySupplierId(idSupplier)
+                .stream().map(SaleResponseDTO::new).toList();
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("client/{idClient}")
+    public List<SaleResponseDTO> getByClient(@PathVariable Long idClient) {
+        return repository
+                .findByClientId(idClient)
+                .stream().map(SaleResponseDTO::new).toList();
+    }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
