@@ -20,13 +20,15 @@ import com.data.apidata.repository.*;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
+import lombok.Data;
+import lombok.Setter;
+import lombok.Getter;
 
 import com.data.apidata.model.Customer;
 import com.data.apidata.repository.CustomerRepository;
 
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
-
 
 @RestController
 @RequestMapping("/customer")
@@ -72,8 +74,8 @@ private final CustomerService CustomerService;
         Customer customerExistente = CustomerService.findByDocument(document);
         if (customerExistente != null) {
             // Atualizar os campos do cliente existente com os dados atualizado
-            customerExistente.setName(customerAtualizado.getname());
-            customerExistente.setEmail(customerAtualizado.getemail());
+            customerExistente.setName(customerAtualizado.getName());
+            customerExistente.setEmail(customerAtualizado.getEmail());
 
             // Chamar o método do serviço para salvar as alterações
             CustomerService.updateCustomer(customerExistente);

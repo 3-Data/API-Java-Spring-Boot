@@ -6,11 +6,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.time.LocalDate;
-
-import lombok.Data;
+import lombok.*;
 
 @Data
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
 
     @Id 
@@ -20,10 +23,6 @@ public class Customer {
     @Column (nullable = false, name = "name")
     private String name;
 
-    public String getname(){
-        return name;
-    }
-    
     @Column (name = "document")
     private String document;
 
@@ -33,9 +32,6 @@ public class Customer {
     @Column (name = "email")
     private String email;
 
-    public String getemail(){
-        return email;
-    }
 
     @Column (name = "lastPurchaseDate")
     private String lastPurchaseDate;
@@ -60,4 +56,5 @@ public class Customer {
 
     @Column(name = "deletedAt")
     private LocalDate deletedAt;
+
 }
