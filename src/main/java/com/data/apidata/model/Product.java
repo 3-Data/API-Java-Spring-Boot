@@ -74,6 +74,10 @@ public class Product {
 
     private Integer stock;
 
+    @JsonIgnore
+    @ManyToMany(mappedBy = "products")
+    private List<Sale> sales = new ArrayList<>();
+
     public Product (ProductDTO data) {
         this.supplier = data.supplier();
         this.name = data.name();
