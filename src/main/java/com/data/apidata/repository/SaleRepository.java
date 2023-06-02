@@ -11,5 +11,5 @@ import java.util.Optional;
 @Repository
 public interface SaleRepository extends JpaRepository<Sale, Long> {
     List<Sale> findBySupplierId(Long idSupplier);
-    List<Sale> findByClientId(Long idClient);
+    List<Sale> findByCustomerId(Long idCustomer);
 }

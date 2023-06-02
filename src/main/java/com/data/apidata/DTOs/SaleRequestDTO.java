@@ -6,7 +6,7 @@ import java.util.List;
 
 public record SaleRequestDTO(
         Long idSupplier,
-        Long idClient,
+        Long idCustomer,
         List<ProductInSaleRequest> products,
         Float value
 ) {

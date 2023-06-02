@@ -45,10 +45,10 @@ public class SaleController {
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("client/{idClient}")
-    public List<SaleResponseDTO> getByClient(@PathVariable Long idClient) {
+    @GetMapping("customer/{idCustomer}")
+    public List<SaleResponseDTO> getByCustomer(@PathVariable Long idCustomer) {
         return repository
-                .findByClientId(idClient)
+                .findByCustomerId(idCustomer)
                 .stream().map(SaleResponseDTO::new).toList();
     }
 
@@ -56,7 +56,7 @@ public class SaleController {
     @PostMapping
     public SaleResponseDTO createSale(@RequestBody SaleRequestDTO data) {
         Supplier supplier = service.findSupplierById(data.idSupplier());
-        Cliente client = service.findClientById(data.idClient());
+        Customer customer = service.findCustomerById(data.idCustomer());
 
         List<Product> products = new ArrayList<>();
         for (ProductInSaleRequest productData :  data.products()) {
@@ -69,7 +69,7 @@ public class SaleController {
             products.add(product);
         }
 
-        Sale sale = new Sale(new SaleDTO(supplier, client, products, data.value()));
+        Sale sale = new Sale(new SaleDTO(supplier, customer, products, data.value()));
         repository.save(sale);
 
         return new SaleResponseDTO(sale);

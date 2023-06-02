@@ -14,7 +14,7 @@ public class BaseServiceImpl implements BaseService {
     @Autowired
     private SupplierRepository supplierRepository;
     @Autowired
-    private ClienteRepository clienteRepository;
+    private CustomerRepository customerRepository;
     @Autowired
     private ProductRepository productRepository;
     @Autowired
@@ -30,9 +30,9 @@ public class BaseServiceImpl implements BaseService {
     }
 
     @Override
-    public Cliente findClientById (Long idClient) {
-        return clienteRepository
-                .findById(idClient)
+    public Customer findCustomerById (Long idcustomer) {
+        return customerRepository
+                .findById(idcustomer)
                 .orElseThrow(() ->
                         new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado!"));
     }
