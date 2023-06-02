@@ -28,8 +28,8 @@ public class Sale {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="idClient", nullable = false)
-    private Cliente client;
+    @JoinColumn(name="idCustomer", nullable = false)
+    private Customer customer;
 
     @JsonIgnore
     @ManyToMany
@@ -57,7 +57,7 @@ public class Sale {
 
     public Sale (SaleDTO data) {
         this.supplier = data.supplier();
-        this.client = data.client();
+        this.customer = data.customer();
         this.products = data.products();
         this.saleValue = data.value();
         this.payed = false;

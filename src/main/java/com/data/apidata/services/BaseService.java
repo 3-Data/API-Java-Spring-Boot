@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BaseService {
     public abstract Supplier findSupplierById(Long idSupplier);
-    public abstract Cliente findClientById(Long idClient);
+    public abstract Customer findCustomerById(Long idCustomer);
     public abstract Product findProductById(Long idProduct);
     public abstract List<Category> findCategoriesByIdsList (List<Long> categories);
     public abstract Product saveProduct(Product product);
