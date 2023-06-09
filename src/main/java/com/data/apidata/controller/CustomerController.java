@@ -30,71 +30,55 @@ import com.data.apidata.repository.CustomerRepository;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 
-@RestController
-@RequestMapping("/customer")
 @ResponseBody
-@AllArgsConstructor
-
+@RestController
+@RequestMapping("/customers")
 public class CustomerController {
+    private final CustomerService customerService;
 
     @Autowired
-    private CustomerRepository CustomerRepository;
-
-    @GetMapping ("/customer")
-    public List<Customer> getAllCustomers() {
-        return CustomerRepository.findAll();
-
-    }
-/*-------------------CUSTOMER----------------------------------- */
-private final CustomerService CustomerService;
     public CustomerController(CustomerService customerService) {
-        this.CustomerService = customerService;
+        this.customerService = customerService;
+    }
+
+    @GetMapping
+    public List<Customer> getAllCustomers() {
+        return customerService.getAllCustomers();
     }
 
     @GetMapping("/{document}")
-    public ResponseEntity<?> findByDocument(@PathVariable String document) {
-        Customer customer = CustomerService.findByDocument(document);
+    public ResponseEntity<Customer> getCustomerByDocument(@PathVariable String document) {
+        Customer customer = customerService.getCustomerByDocument(document);
         if (customer != null) {
             return ResponseEntity.ok(customer);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
-/*-------------------CUSTOMER----------------------------------- */
 
-    @PostMapping ("/customer")
-    @ResponseStatus (HttpStatus.CREATED)    
-    public Customer createCustomer(@RequestBody Customer customer){
-        return CustomerRepository.save(customer);
+    @PostMapping
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+        Customer createdCustomer = customerService.createCustomer(customer);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdCustomer);
     }
 
-
     @PutMapping("/{document}")
-    public ResponseEntity<Customer> atualizarCustomerPorDocumento(@PathVariable String document, @RequestBody Customer customerAtualizado) {
-        Customer customerExistente = CustomerService.findByDocument(document);
-        if (customerExistente != null) {
-            // Atualizar os campos do cliente existente com os dados atualizado
-            customerExistente.setName(customerAtualizado.getName());
-            customerExistente.setEmail(customerAtualizado.getEmail());
-
-            // Chamar o método do serviço para salvar as alterações
-            CustomerService.updateCustomer(customerExistente);
-
-            return ResponseEntity.ok(customerExistente);
+    public ResponseEntity<Customer> updateCustomerByDocument(@PathVariable String document, @RequestBody Customer customer) {
+        Customer updatedCustomer = customerService.updateCustomerByDocument(document, customer);
+        if (updatedCustomer != null) {
+            return ResponseEntity.ok(updatedCustomer);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @DeleteMapping("/{document}")
-    public ResponseEntity<?> deleteByDocument(@PathVariable String document) {
-        boolean excluido = CustomerService.deleteByDocument(document);
-        if (excluido) {
+    public ResponseEntity<Void> deleteCustomerByDocument(@PathVariable String document) {
+        boolean deleted = customerService.deleteCustomerByDocument(document);
+        if (deleted) {
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.notFound().build();
         }
     }
-
-    
 }
