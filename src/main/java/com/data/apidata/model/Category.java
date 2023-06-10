@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@Entity(name = "category")
+@Entity(name = "categories")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor

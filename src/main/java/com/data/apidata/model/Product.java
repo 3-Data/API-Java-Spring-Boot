@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @Data
-@Entity(name = "product")
+@Entity(name = "products")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -62,7 +62,7 @@ public class Product {
     @JsonIgnore
     @ManyToMany
     @JoinTable(
-        name = "categoriesProduct",
+        name = "categories_product",
         joinColumns = @JoinColumn(name = "idProduct"),
         inverseJoinColumns = @JoinColumn(name = "idCategory")
     )

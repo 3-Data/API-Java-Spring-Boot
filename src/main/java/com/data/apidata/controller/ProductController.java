@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("products")
@@ -112,8 +113,19 @@ public class ProductController {
                 data.stock()
         ));
 
-        service.saveProductImages(productImages);
+        List<ProductImage> updatedProductImages = productImages.stream()
+                .map(productImage -> new ProductImage(
+                        productImage.getImage(),
+                        product,
+                        productImage.getCreatedAt(),
+                        productImage.getUpdatedAt(),
+                        productImage.getDeletedAt()
+                ))
+                .collect(Collectors.toList());
+
+
         repository.save(product);
+        service.saveProductImages(updatedProductImages);
 
         return new ProductResponseDTO(product);
     }
@@ -158,7 +170,7 @@ public class ProductController {
         product.setStock(data.stock());
         product.setUpdatedAt(LocalDate.now());
 
-        service.saveProductImages(productImages);
+        service.saveProductImages(productImages); // TODO PRÓXIMO SEMESTRE - melhorar insert/update/delete das imagens de produtos
         repository.save(product);
 
         return new ProductResponseDTO(product);
