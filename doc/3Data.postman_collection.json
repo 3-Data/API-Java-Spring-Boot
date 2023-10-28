@@ -1,0 +1,776 @@
+{
+	"info": {
+		"_postman_id": "83fa6688-d674-4593-8df4-12f8b96a1dcd",
+		"name": "3Data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22100295",
+		"_collection_link": "https://pim-3data.postman.co/workspace/PIM---3Data~687aec2c-f6ff-4d6c-a3b0-ea3dad759bfa/collection/22100295-83fa6688-d674-4593-8df4-12f8b96a1dcd?action=share&source=collection_link&creator=22100295"
+	},
+	"item": [
+		{
+			"name": "/login",
+			"item": [
+				{
+					"name": "/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_API}}/login",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"toledopaulojoao10@gmail.com\",\r\n    \"password\": \"**********\",\r\n    \"document\": \"123456789101\",\r\n    \"userType\": \"F\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/login",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/products",
+			"item": [
+				{
+					"name": "/",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSupplier\": 1,\r\n    \"name\": \"Teste de produto\",\r\n    \"description\": \"Primeiro produto a ser cadastrado no endpoint post\",\r\n    \"productValue\": 99.9,\r\n    \"length\": 20.0,\r\n    \"width\": 5.5,\r\n    \"longitude\": 6.5,\r\n    \"color\": \"preto\",\r\n    \"categories\": [1],\r\n    \"productImages\": [\r\n        \"https://p.turbosquid.com/ts-thumb/fa/DDzLoU/suupJbkS/secreen3/jpg/1312953870/600x600/fit_q87/ad9986f6f4db8f57597949d1edc41480ec180089/secreen3.jpg\",\r\n        \"https://media.sketchfab.com/models/f04a4bb8cd41458ab3fb72a274fd5c9f/thumbnails/d3100d171e7846238eec5ac70250ddf5/d7bee883860b4720bc848bba99dbc89e.jpeg\"\r\n    ],\r\n    \"stock\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/products",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/{productId}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSupplier\": 1,\r\n    \"name\": \"Teste de produto\",\r\n    \"description\": \"Primeiro produto a ser cadastrado no endpoint post\",\r\n    \"productValue\": 99.9,\r\n    \"length\": 20.0,\r\n    \"width\": 5.5,\r\n    \"longitude\": 6.5,\r\n    \"color\": \"preto\",\r\n    \"categories\": [1],\r\n    \"productImages\": [\r\n        \"https://p.turbosquid.com/ts-thumb/fa/DDzLoU/suupJbkS/secreen3/jpg/1312953870/600x600/fit_q87/ad9986f6f4db8f57597949d1edc41480ec180089/secreen3.jpg\",\r\n        \"https://media.sketchfab.com/models/f04a4bb8cd41458ab3fb72a274fd5c9f/thumbnails/d3100d171e7846238eec5ac70250ddf5/d7bee883860b4720bc848bba99dbc89e.jpeg\"\r\n    ],\r\n    \"stock\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/products/2",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/supplier/{supplierId}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSupplier\": 1,\r\n    \"name\": \"Teste de produto\",\r\n    \"description\": \"Primeiro produto a ser cadastrado no endpoint post\",\r\n    \"productValue\": 99.9,\r\n    \"length\": 20.0,\r\n    \"width\": 5.5,\r\n    \"longitude\": 6.5,\r\n    \"color\": \"preto\",\r\n    \"categories\": [1],\r\n    \"productImages\": [\r\n        \"https://p.turbosquid.com/ts-thumb/fa/DDzLoU/suupJbkS/secreen3/jpg/1312953870/600x600/fit_q87/ad9986f6f4db8f57597949d1edc41480ec180089/secreen3.jpg\",\r\n        \"https://media.sketchfab.com/models/f04a4bb8cd41458ab3fb72a274fd5c9f/thumbnails/d3100d171e7846238eec5ac70250ddf5/d7bee883860b4720bc848bba99dbc89e.jpeg\"\r\n    ],\r\n    \"stock\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/products/supplier/1",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"products",
+								"supplier",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/category/{categoryId}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSupplier\": 1,\r\n    \"name\": \"Teste de produto\",\r\n    \"description\": \"Primeiro produto a ser cadastrado no endpoint post\",\r\n    \"productValue\": 99.9,\r\n    \"length\": 20.0,\r\n    \"width\": 5.5,\r\n    \"longitude\": 6.5,\r\n    \"color\": \"preto\",\r\n    \"categories\": [1],\r\n    \"productImages\": [\r\n        \"https://p.turbosquid.com/ts-thumb/fa/DDzLoU/suupJbkS/secreen3/jpg/1312953870/600x600/fit_q87/ad9986f6f4db8f57597949d1edc41480ec180089/secreen3.jpg\",\r\n        \"https://media.sketchfab.com/models/f04a4bb8cd41458ab3fb72a274fd5c9f/thumbnails/d3100d171e7846238eec5ac70250ddf5/d7bee883860b4720bc848bba99dbc89e.jpeg\"\r\n    ],\r\n    \"stock\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/products/category/2",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSupplier\": 1,\r\n    \"name\": \"Passarinho 3d\",\r\n    \"description\": \"Produto a ser cadastrado no endpoint post - Passarinho 3d\",\r\n    \"productValue\": 200.50,\r\n    \"length\": 10,\r\n    \"width\": 12.5,\r\n    \"longitude\": 6.5,\r\n    \"color\": \"Diversas\",\r\n    \"categories\": [1],\r\n    \"productImages\": [\r\n        \"https://p.turbosquid.com/ts-thumb/fa/DDzLoU/suupJbkS/secreen3/jpg/1312953870/600x600/fit_q87/ad9986f6f4db8f57597949d1edc41480ec180089/secreen3.jpg\",\r\n        \"https://media.sketchfab.com/models/f04a4bb8cd41458ab3fb72a274fd5c9f/thumbnails/d3100d171e7846238eec5ac70250ddf5/d7bee883860b4720bc848bba99dbc89e.jpeg\"\r\n    ],\r\n    \"stock\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/products",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/{idProduct}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSupplier\": 1,\r\n    \"name\": \"Teste de produto - Atualização de produto\",\r\n    \"description\": \"Primeiro produto a ser cadastrado no endpoint post\",\r\n    \"productValue\": 99.9,\r\n    \"length\": 20.0,\r\n    \"width\": 5.5,\r\n    \"longitude\": 6.5,\r\n    \"color\": \"preto\",\r\n    \"categories\": [1],\r\n    \"productImages\": [\r\n        \"https://p.turbosquid.com/ts-thumb/fa/DDzLoU/suupJbkS/secreen3/jpg/1312953870/600x600/fit_q87/ad9986f6f4db8f57597949d1edc41480ec180089/secreen3.jpg\",\r\n        \"https://media.sketchfab.com/models/f04a4bb8cd41458ab3fb72a274fd5c9f/thumbnails/d3100d171e7846238eec5ac70250ddf5/d7bee883860b4720bc848bba99dbc89e.jpeg\"\r\n    ],\r\n    \"stock\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/products/1",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/{idProduct}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSupplier\": 1,\r\n    \"name\": \"Teste de produto\",\r\n    \"description\": \"Primeiro produto a ser cadastrado no endpoint post\",\r\n    \"productValue\": 99.9,\r\n    \"length\": 20.0,\r\n    \"width\": 5.5,\r\n    \"longitude\": 6.5,\r\n    \"color\": \"preto\",\r\n    \"categories\": [1],\r\n    \"productImages\": [\r\n        \"https://p.turbosquid.com/ts-thumb/fa/DDzLoU/suupJbkS/secreen3/jpg/1312953870/600x600/fit_q87/ad9986f6f4db8f57597949d1edc41480ec180089/secreen3.jpg\",\r\n        \"https://media.sketchfab.com/models/f04a4bb8cd41458ab3fb72a274fd5c9f/thumbnails/d3100d171e7846238eec5ac70250ddf5/d7bee883860b4720bc848bba99dbc89e.jpeg\"\r\n    ],\r\n    \"stock\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/products/1",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/categories",
+			"item": [
+				{
+					"name": "/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_API}}/categories",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "Action Figures",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_API}}/categories",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/suppliers",
+			"item": [
+				{
+					"name": "/",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/suppliers",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"suppliers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/{{id}}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/suppliers/1",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"suppliers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document\": \"123456789000124\",\r\n    \"socialReason\": \"Teste supplier - social reason\",\r\n    \"commercialReason\": \"Teste supplier - commercial reason\",\r\n    \"email\": \"teste@teste.com.br\",\r\n    \"logo\": \"imagem base 64 / URL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/suppliers",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"suppliers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/{{id}}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/suppliers/1",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"suppliers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/sales",
+			"item": [
+				{
+					"name": "/",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/sales",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"sales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/{saleId}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSupplier\": 1,\r\n    \"idClient\": 1,\r\n    \"products\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"value\": 59.90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/sales/1",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"sales",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/supplier/{idSupplier}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSupplier\": 1,\r\n    \"idClient\": 1,\r\n    \"products\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"value\": 59.90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/sales/supplier/1",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"sales",
+								"supplier",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/client/{idClient}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSupplier\": 1,\r\n    \"idClient\": 1,\r\n    \"products\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"value\": 59.90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/sales/client/1",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"sales",
+								"client",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSupplier\": 1,\r\n    \"idClient\": 1,\r\n    \"products\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"value\": 59.90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/sales",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"sales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/pay/{idPay}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/sales/pay/1",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"sales",
+								"pay",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/customers",
+			"item": [
+				{
+					"name": "/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Gabriel\",\r\n  \"document\": \"2193235245\",\r\n  \"socialName\": \"3-Data\",\r\n  \"email\": \"gabriel@3data.com\",\r\n  \"image\":\"image\",\r\n  \"telephone\": \"13123134\",\r\n  \"gender\": \"M\",\r\n  \"birthDate\": \"11-09-2002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/customer?document=2193235245",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"customer"
+							],
+							"query": [
+								{
+									"key": "document",
+									"value": "2193235245"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Gabriel\",\r\n  \"document\": \"21931412343\",\r\n  \"socialName\": \"3-Data\",\r\n  \"email\": \"gabriel@3data.com\",\r\n  \"image\":\"image\",\r\n  \"telephone\": \"13123134\",\r\n  \"gender\": \"M\",\r\n  \"birthDate\": \"11-09-2002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/customer",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/{document}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Gabriel\",\r\n  \"document\": \"iug979hh08n\",\r\n  \"socialName\": \"3-Data\",\r\n  \"email\": \"gabriel@3data.com\",\r\n  \"image\":\"image\",\r\n  \"telephone\": \"13123134\",\r\n  \"gender\": \"M\",\r\n  \"birthDate\": \"11-09-2002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/customer?document=2193235245",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"customer"
+							],
+							"query": [
+								{
+									"key": "document",
+									"value": "2193235245"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/{document}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Gabriel\",\r\n  \"document\": \"iug979hh08n\",\r\n  \"socialName\": \"3-Data\",\r\n  \"email\": \"gabriel@3data.com\",\r\n  \"image\":\"image\",\r\n  \"telephone\": \"13123134\",\r\n  \"gender\": \"M\",\r\n  \"birthDate\": \"11-09-2002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/customer?document=2193235245",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"customer"
+							],
+							"query": [
+								{
+									"key": "document",
+									"value": "2193235245"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/{document}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Gabriel\",\r\n  \"document\": \"iug979hh08n\",\r\n  \"socialName\": \"3-Data\",\r\n  \"email\": \"gabriel@3data.com\",\r\n  \"image\":\"image\",\r\n  \"telephone\": \"13123134\",\r\n  \"gender\": \"M\",\r\n  \"birthDate\": \"11-09-2002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_API}}/customer?document=2193235245",
+							"host": [
+								"{{URL_API}}"
+							],
+							"path": [
+								"customer"
+							],
+							"query": [
+								{
+									"key": "document",
+									"value": "2193235245"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
