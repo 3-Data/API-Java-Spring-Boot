@@ -1,84 +1,53 @@
 package com.data.apidata.controller;
 
-import java.util.List;
-import com.data.apidata.model.*;
+import com.data.apidata.DTOs.CustomerRequestDTO;
+import com.data.apidata.model.Customer;
+import com.data.apidata.model.Supplier;
+import com.data.apidata.repository.CustomerRepository;
+import com.data.apidata.services.CustomerService;
 
-import org.aspectj.apache.bcel.Repository;
+import org.springframework.web.bind.annotation.*;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.http.ResponseEntity;
-import com.data.apidata.services.*;
-import com.data.apidata.repository.*;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
-import lombok.Data;
-import lombok.Setter;
-import lombok.Getter;
-
-import com.data.apidata.model.Customer;
-import com.data.apidata.repository.CustomerRepository;
-
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-
-@ResponseBody
 @RestController
-@RequestMapping("/customers")
+@AllArgsConstructor
 public class CustomerController {
-    private final CustomerService customerService;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
+    private CustomerService customerService;
+
+    CustomerRepository repository;
+
+    @GetMapping("/customer")
+    public List<Customer>getAllCustomer(){
+        return repository.findAll();
+    
     }
 
-    @GetMapping
-    public List<Customer> getAllCustomers() {
-        return customerService.getAllCustomers();
+    @PostMapping("/customer")
+    public Customer saveCustomer(@RequestBody CustomerRequestDTO customerData){
+        Customer customer = new Customer(customerData);
+
+        return repository.save(customer);
     }
 
-    @GetMapping("/{document}")
-    public ResponseEntity<Customer> getCustomerByDocument(@PathVariable String document) {
-        Customer customer = customerService.getCustomerByDocument(document);
-        if (customer != null) {
-            return ResponseEntity.ok(customer);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @DeleteMapping("/customer/{id}")
+    public void deleteCustomer(@PathVariable Long id) {
+        repository.deleteById(id);
     }
 
-    @PostMapping
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-        Customer createdCustomer = customerService.createCustomer(customer);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdCustomer);
-    }
-
-    @PutMapping("/{document}")
-    public ResponseEntity<Customer> updateCustomerByDocument(@PathVariable String document, @RequestBody Customer customer) {
-        Customer updatedCustomer = customerService.updateCustomerByDocument(document, customer);
-        if (updatedCustomer != null) {
-            return ResponseEntity.ok(updatedCustomer);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @DeleteMapping("/{document}")
-    public ResponseEntity<Void> deleteCustomerByDocument(@PathVariable String document) {
-        boolean deleted = customerService.deleteCustomerByDocument(document);
-        if (deleted) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+@GetMapping
+public List<Customer> getCustomersByDocument(@RequestParam("document") String document) {
+    return customerService.getCustomersByDocument(document);
+}
 }
